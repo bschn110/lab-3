@@ -36,4 +36,23 @@ public class playercontrol : MonoBehaviour
         float clampedZ = Mathf.Clamp(transform.position.z, boundsMin.y, boundsMax.y);
         transform.position = new Vector3(clampedX, transform.position.y, clampedZ);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("ouch");
+        }
+
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Powerup"))
+        {
+            Destroy(other.gameObject);
+        }
+
+    }
 }
